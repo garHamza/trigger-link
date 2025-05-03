@@ -1,0 +1,21 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head><title>Triggering Flow</title></head>
+<body>
+  <h3>Sending request...</h3>
+  <script>
+    fetch("https://prod-44.westeurope.logic.azure.com:443/workflows/6b8d047060904642b190ae1319c95cdd/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=p3sJSw13FC36lpup9AY2Ry_pzsLil4SMnp5gEjBFFXY", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ "click": "true" })
+    })
+    .then(() => {
+      document.body.innerHTML = "<h2>✅ Done! Your request was submitted.</h2>";
+    })
+    .catch(() => {
+      document.body.innerHTML = "<h2>❌ Error sending request.</h2>";
+    });
+  </script>
+</body>
+</html>
